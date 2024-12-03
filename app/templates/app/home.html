@@ -50,98 +50,20 @@
 {% endblock banner-slider %}
 
 {% block main-content %}
-  <div class="row">
+  <div class="row" style="width:100%">
+    {%for product in products%}
     <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
+      <img class="thumbnail" src="{% static 'app/images/placeholder.png' %}">
       <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
+        <h6><strong>{{product.name}}</strong></h6>
         <hr>
 
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
+        <button class="btn btn-ountline-secondary add-btn">Add to cart</button>
+        <a class="btn btn-outline-success" href="#">View</a>
+        <div style="display: inline-block; float:right"><strong>{{product.price | floatformat:2}}$</strong></div>
       </div>
     </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <img class="thumbnail" src="{% static 'app/images/cow-ghee.png' %}">
-      <div class="box-element product">
-        <h6><strong>Sản phẩm</strong></h6>
-        <hr>
-
-        <button class="btn btn-ountline-secondary add-btn">Thêm vào giỏ hàng</button>
-        <a class="btn btn-outline-success" href="#">Xem</a>
-        <div style="display: inline-block; float:right"><strong>200.000 VNĐ</strong></div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 <br/>
 <br/>
