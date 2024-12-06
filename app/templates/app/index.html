@@ -16,6 +16,10 @@
         <script src="{%static 'app/js/all.min.js'%}"></script>
         <script src="{%static 'app/js/myscript.js'%}"></script>
         <script src="{%static 'app/js/s3.js'%}"></script>
+        <script type="text/javascript">
+          var user = '{{request.user}}'
+        </script>
+        
 
         <title></title>
         <meta name="description" content="">
@@ -99,5 +103,6 @@
         <footer class="container--fluid bg-info text-center fixed-bottom p-2 mt-5">
             copyright 2024
         </footer>
+        <script src="{%static 'app/js/cart.js'%}"></script>
     </body>
 </html>
