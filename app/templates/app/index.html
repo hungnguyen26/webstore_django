@@ -91,9 +91,7 @@
                     <li><a class="dropdown-item" href="#">Đơn hàng</a></li>
                     <li><a class="dropdown-item" href="#">Thoát</a></li>
                   </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'cart' %}">Giỏ hàng</a>
+                  
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Đăng nhập</a>
@@ -102,6 +100,10 @@
                   <a class="nav-link" href="#">Đăng kí</a>
                 </li>
               </ul> 
+              <div class= 'form-inline my-2 my-log-0'>
+                <a href="{% url 'cart' %}" ><img id='cart-icon' src="{%static 'images/cart.png'%}"></a>
+                <p id='cart-Total'>{{cartItems}}</p>
+              </div>  
             </div>
           </nav>
 

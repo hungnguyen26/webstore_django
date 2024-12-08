@@ -5,8 +5,17 @@ import json
 
 # Create your views here.
 def home(req):
+    if req.user.is_authenticated:
+        customer = req.user.customer
+        order, created = Order.objects.get_or_create(customer =customer, complete= False)
+        items = order.orderitem_set.all();
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0}
+        cartItems = order['get_cart_items'] 
     products = Product.objects.all()
-    context={'products':products}
+    context={'products':products, 'cartItems':cartItems}
     return render(req,'app/home.html',context)
 
 def cart(req):
