@@ -33,7 +33,32 @@
  font-size: 24px;
  font-weight: bold;
 }
+.cart-wrapper {
+    position: relative;
+    display: inline-block;
+}
 
+#cart-icon {
+    width: 40px;
+    height: auto;
+    margin-right: 15px
+}
+
+.cart-badge {
+    position: absolute;
+    top: -14px; 
+    right: -4px;
+    background-color: blue  !important;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;  
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+    line-height: 16px;  
+
+}
 
 
 

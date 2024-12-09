@@ -2,8 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import *
 import json
-
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
+def register(req):
+    form = UserCreationForm()
+    context = {}
+    return render(req, 'app/register.html', context)
+def Login(req):
+    context = {}
+    return render(req, 'app/Login.html', context)
 def home(req):
     if req.user.is_authenticated:
         customer = req.user.customer
