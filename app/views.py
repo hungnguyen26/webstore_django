@@ -4,9 +4,14 @@ from .models import *
 import json
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
+
 def register(req):
     form = UserCreationForm()
-    context = {}
+    if req.method == "POST":
+        form = UserCreationForm(req.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
     return render(req, 'app/register.html', context)
 def Login(req):
     context = {}

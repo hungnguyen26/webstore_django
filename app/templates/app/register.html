@@ -3,6 +3,9 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% extends 'app/index.html' %}
+{% load static %}
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -13,14 +16,71 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h5>register</5>
+        {% block register %}
+        <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                   
+                  <label class="form-label" for="form3Example1cg">user Name</label>
+                  {{form.username}}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+             
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                  {{form.email}}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                  <button  type="button" data-mdb-button-init
+                    data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        {% comment %} <h5>register</5>
         <form method = "POST" action ="">
-            {{form}}
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type =  "Submit" name = "Create user"/>
         </form>    
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <![endif]--> {% endcomment %}
         
         <script src="" async defer></script>
+        {% endblock register %}
+        
     </body>
 </html>
