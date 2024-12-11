@@ -6,9 +6,10 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def register(req):
-    form = UserCreationForm()
+    form = CreateUserForm()
+
     if req.method == "POST":
-        form = UserCreationForm(req.POST)
+        form = CreateUserForm(req.POST)
         if form.is_valid():
             form.save()
     context = {'form': form}

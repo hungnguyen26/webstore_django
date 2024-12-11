@@ -94,10 +94,10 @@
                   
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Đăng nhập</a>
+                  <a class="nav-link" href="{%url 'Login' %}">Đăng nhập</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Đăng kí</a>
+                  <a class="nav-link" href="{%url 'register' %}">Đăng kí</a>
                 </li>
               </ul> 
               <div class='form-inline my-2 my-log-0'>
@@ -119,7 +119,7 @@
 
         {% block content_checkout %}{% endblock content_checkout %}
 
-         {% block register %}{% endblock register %}
+        {% block register %}{% endblock register %}
 
         {% comment %} footer {% endcomment %}
         <footer class="container--fluid bg-info text-center fixed-bottom p-2 mt-5">
