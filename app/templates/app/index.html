@@ -75,24 +75,19 @@
                     <a class="nav-link " href="#">Liên hệ</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" method="POST" action="{% url 'Search' %}">
+                  {% csrf_token %}
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name ="Searched" >
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
 
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    User1
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
-                    <li><a class="dropdown-item" href="#">Đơn hàng</a></li>
-                    <li><a class="dropdown-item" href="#">Thoát</a></li>
-                  </ul>
-                  
-                </li>
+                <div class='form-inline my-2 my-log-0'>
+                  <span>Hello! {{request.user}}</span>
+                  <span><a href="{% url 'Logout' %}">Logout</a></span>
+
+                </div>
                 <li class="nav-item">
                   <a class="nav-link" href="{%url 'Login' %}">Đăng nhập</a>
                 </li>
