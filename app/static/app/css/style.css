@@ -47,7 +47,7 @@
 .cart-badge {
     position: absolute;
     top: -14px; 
-    right: -4px;
+    right: -20px;
     background-color: blue  !important;
     color: white;
     border-radius: 50%;
@@ -57,7 +57,7 @@
     min-width: 20px;
     text-align: center;
     line-height: 16px;  
-
+SS
 }
 
 

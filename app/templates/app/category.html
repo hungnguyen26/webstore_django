@@ -17,9 +17,8 @@
     </head>
     <body>
         {% block register %}
-        <h5> Result search for {{searched}} </h5> <br />
         <div class="row" style="width:100%">
-            {%for product in keys %}
+            {%for product in products %}
             <div class="col-lg-3">
               <img class="thumbnail" src="{{product.ImageURL}} ">
               <div class="box-element product">
@@ -27,7 +26,7 @@
                 <hr>
         
                 <button data-product={{product.id}} data-action="add" class="btn btn-ountline-secondary add-btn update-cart">Add to cart</button>
-                {% comment %} <a class="btn btn-outline-success" href="#">View</a> {% endcomment %}
+                <a class="btn btn-outline-success" href="#">View</a>
                 <div style="display: inline-block; float:right"><strong>{{product.price | floatformat:2}}$</strong></div>
               </div>
             </div>

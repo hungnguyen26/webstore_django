@@ -6,8 +6,28 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 # Create your views here.
+def category(req):
+    categories = Category.objects.filter(is_sub=False)
+    active_category = req.GET.get('category', '')
+    if active_category:
+        products = Product.objects.filter(Category__slug=active_category)
+    context = {'categories': categories, 'products': products, 'active_category': active_category}
+    return render(req, 'app/category.html', context)
 def Search(req):
-    return render(req, 'app/Search.html')
+    if req.method == "POST":
+            searched = req.POST["searched"]
+            keys = Product.objects.filter(name__contains = searched)
+    if req.user.is_authenticated:
+        customer = req.user
+        order, created = Order.objects.get_or_create(customer =customer, complete= False)
+        items = order.orderitem_set.all();
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0}
+        cartItems = order['get_cart_items'] 
+    products = Product.objects.all()       
+    return render(req, 'app/Search.html',{"searched":searched, "keys": keys, 'products':products, 'cartItems':cartItems})
 def register(req):
     form = CreateUserForm()
 
@@ -44,12 +64,17 @@ def home(req):
         order, created = Order.objects.get_or_create(customer =customer, complete= False)
         items = order.orderitem_set.all();
         cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
     else:
         items = []
         order = {'get_cart_items':0,'get_cart_total':0}
         cartItems = order['get_cart_items'] 
+        user_not_login = "show"
+        user_login = "hidden"
+    categories = Category.objects.filter(is_sub=False)
     products = Product.objects.all()
-    context={'products':products, 'cartItems':cartItems}
+    context={'categories':categories,'products':products, 'cartItems':cartItems, 'user_not_login': user_not_login, 'user_login':user_login}
     return render(req,'app/home.html',context)
 
 def cart(req):
@@ -58,11 +83,16 @@ def cart(req):
         order, created = Order.objects.get_or_create(customer =customer, complete= False)
         items = order.orderitem_set.all();
         cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
     else:
         items = []
         order = {'get_cart_items':0,'get_cart_total':0}
         cartItems = order['get_cart_items']
-    context={'items':items, 'order':order, 'cartItems':cartItems }
+        user_not_login = "show"
+        user_login = "hidden"
+    categories = Category.objects.filter(is_sub=False)
+    context={'categories':categories,'items':items, 'order':order, 'cartItems':cartItems, 'user_not_login': user_not_login, 'user_login':user_login }
     return render(req,'app/cart.html',context)
 
 def checkout(req):
@@ -71,11 +101,16 @@ def checkout(req):
         order, created = Order.objects.get_or_create(customer =customer, complete= False)
         items = order.orderitem_set.all();
         cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
     else:
         items = []
         order = {'get_cart_items':0,'get_cart_total':0}
         cartItems = order['get_cart_items']
-    context={'items':items, 'order':order, 'cartItems':cartItems }
+        user_not_login = "show"
+        user_login = "hidden"
+    categories = Category.objects.filter(is_sub=False)
+    context={'categories':categories,'items':items, 'order':order, 'cartItems':cartItems, 'user_not_login': user_not_login, 'user_login':user_login }
     return render(req,'app/checkout.html',context)
 
 def updateItem(req):
