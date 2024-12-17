@@ -59,6 +59,10 @@
         <hr>
 
         <button data-product={{product.id}} data-action="add" class="btn btn-ountline-secondary add-btn update-cart">Add to cart</button>
+        <div id="success-message" style="display: none; color: green; margin-top: 10px;">
+          Thêm vào giỏ hàng thành công!
+          Đến giỏ hàng để xem !
+      </div>
         <div style="display: inline-block; float:right"><strong>{{product.price | floatformat:2}}$</strong></div>
       </div>
     </div>

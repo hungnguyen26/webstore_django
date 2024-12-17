@@ -11,7 +11,9 @@ def category(req):
     active_category = req.GET.get('category', '')
     if active_category:
         products = Product.objects.filter(Category__slug=active_category)
-    context = {'categories': categories, 'products': products, 'active_category': active_category}
+    user_not_login = "hidden"
+    user_login = "show"
+    context = {'user_not_login':user_not_login, 'user_login':user_login,'categories': categories, 'products': products, 'active_category': active_category}
     return render(req, 'app/category.html', context)
 def Search(req):
     if req.method == "POST":
@@ -74,7 +76,7 @@ def home(req):
         user_login = "hidden"
     categories = Category.objects.filter(is_sub=False)
     products = Product.objects.all()
-    context={'categories':categories,'products':products, 'cartItems':cartItems, 'user_not_login': user_not_login, 'user_login':user_login}
+    context={ 'user_not_login':user_not_login, 'user_login':user_login,'categories':categories,'products':products, 'cartItems':cartItems}
     return render(req,'app/home.html',context)
 
 def cart(req):
