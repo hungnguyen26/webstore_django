@@ -99,7 +99,7 @@
                   <a class="nav-link" href="{%url 'Login' %}">Đăng nhập</a>
                   <a class="nav-link" href="{%url 'register' %}">Đăng kí</a>
                 </div>
-              <div class='form-inline my-2 my-log-0'>
+              <div class='form-inline my-2 my-log-0 style = "visibility: {{hinder_cart}}'>
                 <a href="{% url 'cart' %}" class="cart-wrapper">
                     <img id='cart-icon' src="{%static 'images/cart.png'%}" alt="Cart">
                     <span id="cart-total" class="cart-badge">{{cartItems}}</span>

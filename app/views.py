@@ -28,8 +28,11 @@ def Search(req):
         items = []
         order = {'get_cart_items':0,'get_cart_total':0}
         cartItems = order['get_cart_items'] 
-    products = Product.objects.all()       
-    return render(req, 'app/Search.html',{"searched":searched, "keys": keys, 'products':products, 'cartItems':cartItems})
+    products = Product.objects.all()
+    user_not_login = "hidden"
+    user_login = "show"
+    context = {}       
+    return render(req, 'app/Search.html',{'user_not_login':user_not_login, 'user_login':user_login,"searched":searched, "keys": keys, 'products':products, 'cartItems':cartItems})
 def register(req):
     form = CreateUserForm()
 
@@ -38,7 +41,8 @@ def register(req):
         if form.is_valid():
             form.save()
         return redirect('Login')
-    context = {'form': form}
+    hinder_cart = "hidden"
+    context = {'form': form,'hinder_cart':hinder_cart}
     return render(req, 'app/register.html', context)
 def LoginPage(req):
     if req.user.is_authenticated:
@@ -54,8 +58,8 @@ def LoginPage(req):
             return redirect('home')
         else:
             messages.info(req, 'Username or password is incorrect!')
-    
-    context = {}
+    hinder_cart = "hidden"
+    context = {'hinder_cart':hinder_cart}
     return render(req, 'app/Login.html', context)
 def logoutPage(req):
     logout(req)
